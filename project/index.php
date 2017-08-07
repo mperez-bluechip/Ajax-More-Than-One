@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Ajax Bidders</title>
+        <title>Ajax Highest Bid</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,9 +15,9 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         <script>
 
-    function showUser(str) {
+        function showUser(str) {
     if (str == "") {
-        document.getElementById("allbidders").innerHTML = "";
+        document.getElementById("userbids").innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -29,7 +29,7 @@
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("allbidders").innerHTML = this.responseText;
+                document.getElementById("userbids").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("GET","getBid.php?q="+str,true);
@@ -46,11 +46,14 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-      <form style="padding: 2% 2%;">
-      <label style="color: red;" for="seeBids">Click to see bidders...</label>
-      <input type="submit" value="See bidders" onclick="showUser()">
-      </form>
-      <div id="allbidders"><b></b></div>
+
+
+        <form style="padding: 2% 2%;" method="post" action="getBid.php">
+          <label>See bids ...</label>
+          <input type="submit" value="See bids..." onclick="showUser()">
+        </form>
+      <br>
+    
 
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

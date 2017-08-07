@@ -24,31 +24,24 @@
         <h2>Bidders</h2>
 
         <?php
+        $q = intval($_GET['q']);
 
-          $con = mysqli_connect('localhost','mperez','admin0112@','ajax-all-bids');
-          if (!$con) {
-            die('Could not connect: ' . mysqli_error($con));
-          }
+        $con = mysqli_connect('localhost','mperez','admin0112@','ajax-all-bids');
+        if (!$con) {
+          die('Could not connect: ' . mysqli_error($con));
+        }
 
-          mysqli_select_db($con,"ajax-all-bids");
-          $sql="SELECT * FROM users ORDER BY `client_bid` DESC";
-          $result = mysqli_query($con,$sql);
+        mysqli_select_db($con,"ajax-all-bids");
+        $sql="SELECT * FROM users ORDER BY `client_bid` DESC";
+        $result = mysqli_query($con,$sql);
 
-          echo "<ul>";
-          $i = 0;
-          while($row = mysqli_fetch_array($result)) {
-              echo "<li>" . $row['client_bid'] . "</li>";
-              if($i == 3){
-                break;
-              }
-            }
-            $i++;
-
-
-          echo "</ul>";
-          mysqli_close($con);
-        ?>
-
+        echo "<ul>";
+        while($row = mysqli_fetch_array($result)) {
+          echo "<li>" . $row['client_bid'] . "</li>";
+        }
+        echo "</ul>";
+        mysqli_close($con);
+          ?>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
