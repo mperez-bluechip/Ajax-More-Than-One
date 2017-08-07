@@ -21,7 +21,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <h2>Bidders</h2>
+        <h2>Bids</h2>
 
         <?php
         $q = intval($_GET['q']);
